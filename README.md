@@ -37,3 +37,22 @@ EKSCTL:
 
 #follow the below steps:
   https://medium.com/@maheshbiradar8887/eks-monitoring-using-helm-prometheus-and-grafana-dashboard-e47093c08ece
+
+#then host the express application with help of 3 files
+copy these files to server :0-metric-server.yaml,1-deployment.yaml,2-hpa.yml
+kubectl apply -f 0-metric-server.yaml
+
+kubectl apply -f 1-deployment.yaml
+
+kubectl apply -f 2-hpa.yml
+
+#forward the port 
+kubectl pod-forward {express aplication pod name}
+
+#access the application from server to moniter the cpu and memory
+curl localhost:8080/memory
+curl localhost:8080/cpu
+
+#after runnning these commands oberserve the changes in grafana application
+
+
